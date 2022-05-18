@@ -9,6 +9,7 @@ import images from '~/assets/images';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -51,7 +52,11 @@ const Header = () => {
 						</button>
 					</div>
 				</Tippy>
-				<div className={cx('actions')}></div>
+				<div className={cx('actions')}>
+					<Button type="primary"  onClick={() => console.log('Upload')} className={cx('upload')}>
+						Login
+					</Button>
+				</div>
 			</div>
 		</header>
 	);
