@@ -3,5 +3,25 @@
     border-radius: 4px;
     font-size: 1.6rem;
     font-weight: 700;
-    padding: 9px 12px;
+    padding: 9px 20px;
+    background-color: var(--white);
+    border: 1px solid transparent;
+}
+
+.primary {
+    background-color: var(--primary);
+    color: var(--white);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55;
+    }
+}
+
+.outline {
+    color: var(--primary);
+    border-color: currentColor;
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
 }

@@ -53,7 +53,7 @@ const Header = () => {
 					</div>
 				</Tippy>
 				<div className={cx('actions')}>
-					<Button type="primary"  onClick={() => console.log('Upload')} className={cx('upload')}>
+					<Button type="outline"  onClick={() => console.log('Upload')} className={cx('upload')}>
 						Login
 					</Button>
 				</div>
