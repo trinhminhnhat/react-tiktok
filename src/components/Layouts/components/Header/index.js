@@ -1,4 +1,5 @@
-import { faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
+import { faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -8,13 +9,28 @@ import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import Menu from '~/components/Popper/Menu';
 import styles from './Header.module.scss';
-
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
 	const [searchResults, setSearchResults] = useState([]);
+	const menuItems = [
+		{
+			icon: <FontAwesomeIcon icon={faEarthAsia} />,
+			title: 'English',
+		},
+		{
+			icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+			title: 'Feedback and help',
+			to: '/feedback',
+		},
+		{
+			icon: <FontAwesomeIcon icon={faKeyboard} />,
+			title: 'Keyboard shortcuts',
+		},
+	];
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -29,7 +45,7 @@ const Header = () => {
 					<img src={images.logo} alt="Tiktok Logo" />
 				</div>
 				<Tippy
-					interactive={true}
+					interactive
 					visible={searchResults.length > 0}
 					render={(attrs) => (
 						<div className={cx('search-results')} tabIndex="-1" {...attrs}>
@@ -55,6 +71,12 @@ const Header = () => {
 				<div className={cx('actions')}>
 					<Button type="text">Upload</Button>
 					<Button type="primary">Login</Button>
+
+					<Menu items={menuItems}>
+						<button className={cx('more-btn')}>
+							<FontAwesomeIcon icon={faEllipsisVertical} />
+						</button>
+					</Menu>
 				</div>
 			</div>
 		</header>
