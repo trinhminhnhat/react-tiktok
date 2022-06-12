@@ -1,5 +1,11 @@
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
-import { faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {
+	faCircleXmark,
+	faEarthAsia,
+	faEllipsisVertical,
+	faKeyboard,
+	faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -20,6 +26,21 @@ const Header = () => {
 		{
 			icon: <FontAwesomeIcon icon={faEarthAsia} />,
 			title: 'English',
+			subMenus: {
+				title: 'Language',
+				data: [
+					{
+						type: 'language',
+						code: 'en',
+						title: 'English',
+					},
+					{
+						type: 'language',
+						code: 'vi',
+						title: 'Tiếng Việt',
+					},
+				],
+			},
 		},
 		{
 			icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -37,6 +58,15 @@ const Header = () => {
 			setSearchResults([]);
 		}, 0);
 	}, []);
+
+	const handleMenuChange = (menuItem) => {
+		switch (menuItem.type) {
+			case 'language':
+				// Handle change language
+				break;
+			default:
+		}
+	};
 
 	return (
 		<header className={cx('wrapper')}>
@@ -72,7 +102,7 @@ const Header = () => {
 					<Button type="text">Upload</Button>
 					<Button type="primary">Login</Button>
 
-					<Menu items={menuItems}>
+					<Menu items={menuItems} onChange={handleMenuChange}>
 						<button className={cx('more-btn')}>
 							<FontAwesomeIcon icon={faEllipsisVertical} />
 						</button>
