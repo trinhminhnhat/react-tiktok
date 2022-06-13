@@ -9,7 +9,7 @@ const Button = ({
 	href,
 	onClick,
 	children,
-	type = 'default',
+	type = 'normal',
 	size = 'medium',
 	rounded = false,
 	disabled = false,

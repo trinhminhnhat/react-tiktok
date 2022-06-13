@@ -8,9 +8,8 @@ import MenuItem from './MenuItem';
 
 const cx = classNames.bind(styles);
 
-const Menu = ({ children, items = [], onChange = () => {}}) => {
+const Menu = ({ children, items = [], onChange = () => {} }) => {
 	const [history, setHistory] = useState([{ data: items }]);
-	console.log('history: ', history);
 	const current = history[history.length - 1];
 
 	const renderItems = () => {
@@ -37,17 +36,24 @@ const Menu = ({ children, items = [], onChange = () => {}}) => {
 			interactive
 			visible
 			placement="bottom-end"
+			offset={[12, 8]}
 			delay={[0, 700]}
 			render={(attrs) => (
 				<div className={cx('menu-list')} tabIndex="-1" {...attrs}>
 					<PopperWrapper className={cx('menu-wrapper')}>
-						{history.length > 1 && <MenuHeader title={current.title} onBack={() => {
-							setHistory(pre => history.slice(0, -1));
-						}} />}
+						{history.length > 1 && (
+							<MenuHeader
+								title={current.title}
+								onBack={() => {
+									setHistory((pre) => history.slice(0, -1));
+								}}
+							/>
+						)}
 						{renderItems()}
 					</PopperWrapper>
 				</div>
 			)}
+			onHide={() => setHistory((pre) => history.slice(0, 1))}
 		>
 			{children}
 		</Tippy>

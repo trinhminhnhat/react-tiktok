@@ -1,16 +1,23 @@
-import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
+import { faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
 import {
+	faArrowRightToBracket,
+	faBitcoinSign,
+	faChartLine,
 	faCircleXmark,
 	faEarthAsia,
 	faEllipsisVertical,
+	faEnvelope,
+	faGear,
 	faKeyboard,
 	faMagnifyingGlass,
+	faPaperPlane,
+	faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import TippyHeadless from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import 'tippy.js/dist/tippy.css'; // optional
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
@@ -21,6 +28,7 @@ import styles from './Header.module.scss';
 const cx = classNames.bind(styles);
 
 const Header = () => {
+	const isLogin = true;
 	const [searchResults, setSearchResults] = useState([]);
 	const menuItems = [
 		{
@@ -52,6 +60,30 @@ const Header = () => {
 			title: 'Keyboard shortcuts',
 		},
 	];
+	const userMenuItems = [
+		{
+			icon: <FontAwesomeIcon icon={faUser} />,
+			title: 'View profile',
+		},
+		{
+			icon: <FontAwesomeIcon icon={faBitcoinSign} />,
+			title: 'Get coins',
+		},
+		{
+			icon: <FontAwesomeIcon icon={faChartLine} />,
+			title: 'View analytics',
+		},
+		{
+			icon: <FontAwesomeIcon icon={faGear} />,
+			title: 'Settings',
+		},
+		...menuItems,
+		{
+			icon: <FontAwesomeIcon icon={faArrowRightToBracket} />,
+			title: 'Log out',
+			separate: true,
+		},
+	];
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -74,7 +106,7 @@ const Header = () => {
 				<div className={cx('logo')}>
 					<img src={images.logo} alt="Tiktok Logo" />
 				</div>
-				<Tippy
+				<TippyHeadless
 					interactive
 					visible={searchResults.length > 0}
 					render={(attrs) => (
@@ -97,15 +129,41 @@ const Header = () => {
 							<FontAwesomeIcon icon={faMagnifyingGlass} />
 						</button>
 					</div>
-				</Tippy>
+				</TippyHeadless>
 				<div className={cx('actions')}>
-					<Button type="text">Upload</Button>
-					<Button type="primary">Login</Button>
-
-					<Menu items={menuItems} onChange={handleMenuChange}>
-						<button className={cx('more-btn')}>
-							<FontAwesomeIcon icon={faEllipsisVertical} />
-						</button>
+					<Button type="default" leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+						Upload
+					</Button>
+					{isLogin ? (
+						<>
+							<Tippy content="Message" placement="bottom">
+								<button className={cx('actions__btn')}>
+									<FontAwesomeIcon icon={faPaperPlane} />
+								</button>
+							</Tippy>
+							<Tippy content="Inbox" placement="bottom">
+								<button className={cx('actions__btn')}>
+									<FontAwesomeIcon icon={faEnvelope} />
+								</button>
+							</Tippy>
+						</>
+					) : (
+						<>
+							<Button type="primary">Login</Button>
+						</>
+					)}
+					<Menu items={isLogin ? userMenuItems : menuItems} onChange={handleMenuChange}>
+						{isLogin ? (
+							<img
+								className={cx('avatar')}
+								src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/00e538686eb095213de652cef4d5ed76~c5_720x720.jpeg?x-expires=1655193600&x-signature=%2BGIl35c4nZwJwF1LUwXwAeo3NPM%3D"
+								alt="avatar"
+							/>
+						) : (
+							<button className={cx('more-btn')}>
+								<FontAwesomeIcon icon={faEllipsisVertical} />
+							</button>
+						)}
 					</Menu>
 				</div>
 			</div>
