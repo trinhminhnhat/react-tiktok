@@ -34,7 +34,7 @@ const Menu = ({ children, items = [], onChange = () => {} }) => {
 	return (
 		<Tippy
 			interactive
-			visible
+			// visible
 			placement="bottom-end"
 			offset={[12, 8]}
 			delay={[0, 700]}

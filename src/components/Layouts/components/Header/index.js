@@ -5,13 +5,9 @@ import {
 	faChartLine,
 	faCircleXmark,
 	faEarthAsia,
-	faEllipsisVertical,
-	faEnvelope,
-	faGear,
+	faEllipsisVertical, faGear,
 	faKeyboard,
-	faMagnifyingGlass,
-	faPaperPlane,
-	faPlus,
+	faMagnifyingGlass, faPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
@@ -21,6 +17,8 @@ import { useEffect, useState } from 'react';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import { InboxIcon, MessageIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Menu from '~/components/Popper/Menu';
 import styles from './Header.module.scss';
@@ -138,12 +136,12 @@ const Header = () => {
 						<>
 							<Tippy content="Message" placement="bottom">
 								<button className={cx('actions__btn')}>
-									<FontAwesomeIcon icon={faPaperPlane} />
+									<MessageIcon width="2.6rem" height="2.6rem" />
 								</button>
 							</Tippy>
 							<Tippy content="Inbox" placement="bottom">
 								<button className={cx('actions__btn')}>
-									<FontAwesomeIcon icon={faEnvelope} />
+									<InboxIcon />
 								</button>
 							</Tippy>
 						</>
@@ -154,7 +152,7 @@ const Header = () => {
 					)}
 					<Menu items={isLogin ? userMenuItems : menuItems} onChange={handleMenuChange}>
 						{isLogin ? (
-							<img
+							<Image
 								className={cx('avatar')}
 								src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/00e538686eb095213de652cef4d5ed76~c5_720x720.jpeg?x-expires=1655193600&x-signature=%2BGIl35c4nZwJwF1LUwXwAeo3NPM%3D"
 								alt="avatar"
