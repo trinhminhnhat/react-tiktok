@@ -1,6 +1,6 @@
 // Layouts
 import {HeaderOnly} from '~/components/Layouts';
-
+import Profile from '~/pages/Profile';
 import Following from '~/pages/Following';
 import Home from '~/pages/Home';
 import Search from '~/pages/Search';
@@ -12,6 +12,9 @@ const publicRoutes = [
     },
     {
         path: '/following', component: Following
+    },
+    {
+        path: '/@:nickname', component: Profile
     },
     {
         path: '/upload', component: Upload, layout: HeaderOnly

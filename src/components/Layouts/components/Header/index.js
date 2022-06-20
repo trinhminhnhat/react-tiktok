@@ -109,6 +109,7 @@ const Header = () => {
 							<Tippy content="Inbox" placement="bottom">
 								<button className={cx('actions__btn')}>
 									<InboxIcon />
+									<span className={cx('badge')}>10</span>
 								</button>
 							</Tippy>
 						</>
