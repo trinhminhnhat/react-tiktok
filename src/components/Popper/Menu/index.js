@@ -8,7 +8,7 @@ import MenuItem from './MenuItem';
 
 const cx = classNames.bind(styles);
 
-const Menu = ({ children, items = [], onChange = () => {} }) => {
+const Menu = ({ children, items = [], hideOnClick = false, onChange = () => {} }) => {
 	const [history, setHistory] = useState([{ data: items }]);
 	const current = history[history.length - 1];
 
@@ -38,6 +38,7 @@ const Menu = ({ children, items = [], onChange = () => {} }) => {
 			placement="bottom-end"
 			offset={[12, 8]}
 			delay={[0, 700]}
+			hideOnClick={hideOnClick}
 			render={(attrs) => (
 				<div className={cx('menu-list')} tabIndex="-1" {...attrs}>
 					<PopperWrapper className={cx('menu-wrapper')}>

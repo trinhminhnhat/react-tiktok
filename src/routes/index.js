@@ -1,26 +1,26 @@
-// Layouts
-import {HeaderOnly} from '~/components/Layouts';
-import Profile from '~/pages/Profile';
+import { HeaderOnly } from '~/components/Layouts';
+import routesConfig from '~/config/routes';
 import Following from '~/pages/Following';
 import Home from '~/pages/Home';
+import Profile from '~/pages/Profile';
 import Search from '~/pages/Search';
 import Upload from '~/pages/Upload';
 
 const publicRoutes = [
     {
-        path: '/', component: Home,
+        path: routesConfig.HOME, component: Home,
     },
     {
-        path: '/following', component: Following
+        path: routesConfig.FOLLOWING, component: Following
     },
     {
-        path: '/@:nickname', component: Profile
+        path: routesConfig.PROFILE, component: Profile
     },
     {
-        path: '/upload', component: Upload, layout: HeaderOnly
+        path: routesConfig.UPLOAD, component: Upload, layout: HeaderOnly
     },
     {
-        path: '/search', component: Search, layout: null
+        path: routesConfig.SEARCH, component: Search, layout: null
     },
 ];
 const privateRoutes = [];

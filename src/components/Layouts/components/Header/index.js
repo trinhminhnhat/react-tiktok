@@ -19,6 +19,8 @@ import Image from '~/components/Image';
 import Menu from '~/components/Popper/Menu';
 import Search from '../Search';
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -91,9 +93,9 @@ const Header = () => {
 	return (
 		<header className={cx('wrapper')}>
 			<div className={cx('inner')}>
-				<div className={cx('logo')}>
+				<Link to={routesConfig.HOME} className={cx('logo')}>
 					<img src={images.logo} alt="Tiktok Logo" />
-				</div>
+				</Link>
 				<Search />
 				<div className={cx('actions')}>
 					<Button type="default" leftIcon={<FontAwesomeIcon icon={faPlus} />}>
