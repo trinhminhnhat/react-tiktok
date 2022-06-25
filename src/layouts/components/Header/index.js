@@ -20,7 +20,7 @@ import Menu from '~/components/Popper/Menu';
 import Search from '../Search';
 import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
-import routesConfig from '~/config/routes';
+import { routesConfig } from '~/config';
 
 const cx = classNames.bind(styles);
 

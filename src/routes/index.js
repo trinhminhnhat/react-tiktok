@@ -1,5 +1,5 @@
-import { HeaderOnly } from '~/components/Layouts';
-import routesConfig from '~/config/routes';
+import { HeaderOnly } from '~/layouts';
+import { routesConfig } from '~/config';
 import Following from '~/pages/Following';
 import Home from '~/pages/Home';
 import Profile from '~/pages/Profile';
