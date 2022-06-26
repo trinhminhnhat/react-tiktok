@@ -1,6 +1,7 @@
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { forwardRef, useState } from 'react';
 import images from '~/assets/images';
-import classNames from 'classnames';
 import styles from './Image.module.scss';
 
 const Image = ({ src, alt, className, fallback: customFallback = images.defaultImage, ...props }, ref) => {
@@ -19,6 +20,13 @@ const Image = ({ src, alt, className, fallback: customFallback = images.defaultI
 			onError={handleError}
 		/>
 	);
+};
+
+Image.propTypes = {
+	src: PropTypes.string.isRequired,
+	alt: PropTypes.string.isRequired,
+	className: PropTypes.string,
+	fallback: PropTypes.string,
 };
 
 export default forwardRef(Image);
