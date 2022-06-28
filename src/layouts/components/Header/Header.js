@@ -117,7 +117,7 @@ const Header = () => {
 						</>
 					) : (
 						<>
-							<Button type="primary">Login</Button>
+							<Button type="primary" to="/login">Login</Button>
 						</>
 					)}
 					<Menu items={isLogin ? userMenuItems : menuItems} onChange={handleMenuChange}>

@@ -4,7 +4,7 @@ import { forwardRef, useState } from 'react';
 import images from '~/assets/images';
 import styles from './Image.module.scss';
 
-const Image = ({ src, alt, className, fallback: customFallback = images.defaultImage, ...props }, ref) => {
+const Image = forwardRef(({ src, alt, className, fallback: customFallback = images.defaultImage, ...props }, ref) => {
 	const [fallback, setFallback] = useState(false);
 	const handleError = () => {
 		setFallback(customFallback);
@@ -20,7 +20,7 @@ const Image = ({ src, alt, className, fallback: customFallback = images.defaultI
 			onError={handleError}
 		/>
 	);
-};
+});
 
 Image.propTypes = {
 	src: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ Image.propTypes = {
 	fallback: PropTypes.string,
 };
 
-export default forwardRef(Image);
+export default Image;
